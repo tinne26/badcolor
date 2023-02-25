@@ -1,2 +1,5 @@
 # stuff that must be kept away from you
 /private/
+
+# avoid pushing example results
+*.png
