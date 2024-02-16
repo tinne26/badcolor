@@ -1,2 +1,4 @@
-github.com/tinne26/badcli v0.0.0-20230223184801-ee4c2282b9f0 h1:TT9h0a0L+JEGSzTtEXTZ5RfKu/95emWtFmtu5wqLaXU=
-github.com/tinne26/badcli v0.0.0-20230223184801-ee4c2282b9f0/go.mod h1:BNDfvSU/bWJwcXlWaqdSro2hNHcsUCHoZxwfwZlY2ig=
+github.com/tinne26/badcli v0.0.0-20230226175932-2e518b3e1055 h1:Tu6Uljc5F8jV75zpkfiXJIurpFs3Rhzdn+3NKPAg4Mc=
+github.com/tinne26/badcli v0.0.0-20230226175932-2e518b3e1055/go.mod h1:BNDfvSU/bWJwcXlWaqdSro2hNHcsUCHoZxwfwZlY2ig=
+github.com/tinne26/badcolor v0.0.0-20230225132329-06f1b3af2ea1 h1:vvvnmGxgYrQ86vEWL1gvCEr4cQYjPpN+wzxTq7vVF+Y=
+github.com/tinne26/badcolor v0.0.0-20230225132329-06f1b3af2ea1/go.mod h1:fxIK2uNpK5sGDall0uHVYkOHuBdL312F/OLFh3VgudE=

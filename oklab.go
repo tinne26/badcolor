@@ -29,9 +29,9 @@ func ToOklab(clr color.Color) Oklab {
 	z := math.Cbrt(0.0883024619*linRGBA.R + 0.2817188376*linRGBA.G + 0.6299787005*linRGBA.B)
 
 	return Oklab{
-		L: Clamp(0.2104542553*x + 0.7936177850*y - 0.0040720468*z, 0, 1),
-		A: Clamp(1.9779984951*x - 2.4285922050*y + 0.4505937099*z, 0, 1),
-		B: Clamp(0.0259040371*x + 0.7827717662*y - 0.8086757660*z, 0, 1),
+		L: 0.2104542553*x + 0.7936177850*y - 0.0040720468*z,
+		A: 1.9779984951*x - 2.4285922050*y + 0.4505937099*z,
+		B: 0.0259040371*x + 0.7827717662*y - 0.8086757660*z,
 		Alpha: linRGBA.A,
 	}
 }
@@ -65,4 +65,13 @@ func (self Oklab) LCh() (l, c, h float64) {
 
 func (self Oklab) Equals(other Oklab) bool {
 	return self.L == other.L && self.A == other.A && self.B == other.B && self.Alpha == other.Alpha
+}
+
+func (self Oklab) Interpolate(to Oklab, t float64) Oklab {
+	return Oklab{
+		L: InterpLinear(self.L, to.L, t),
+		A: InterpLinear(self.A, to.A, t),
+		B: InterpLinear(self.B, to.B, t),
+		Alpha: interpAlphaLinear(self.Alpha, to.Alpha, t),
+	}
 }

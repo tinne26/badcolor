@@ -43,18 +43,25 @@ func ToLinearizedRGBA(clr color.Color) LinearizedRGBA {
 
 func (self LinearizedRGBA) RGBA() (r, g, b, a uint32) {
 	rgba := self.RGBAf64()
-	r64 := math.Round(rgba.R*65535.0)
-	g64 := math.Round(rgba.G*65535.0)
-	b64 := math.Round(rgba.B*65535.0)
-	return uint32(r64), uint32(g64), uint32(b64), rgba.A
+	r64 := uint32(math.Round(rgba.R*65535.0))
+	g64 := uint32(math.Round(rgba.G*65535.0))
+	b64 := uint32(math.Round(rgba.B*65535.0))
+	// if rgba.A < r64 || rgba.A < g64 || rgba.A < b64 {
+	// 	panic("bad conversion")
+	// }
+	return r64, g64, b64, rgba.A
 }
 
 func (self LinearizedRGBA) RGBA8() color.RGBA {
 	rgba := self.RGBAf64()
-	r := math.Round(rgba.R*255.0)
-	g := math.Round(rgba.G*255.0)
-	b := math.Round(rgba.B*255.0)
-	return color.RGBA{uint8(r), uint8(g), uint8(b), uint8(rgba.A >> 8)}
+	r := uint8(math.Round(rgba.R*255.0))
+	g := uint8(math.Round(rgba.G*255.0))
+	b := uint8(math.Round(rgba.B*255.0))
+	a := uint8(rgba.A >> 8)
+	// if a < r || a < g || a < b {
+	// 	panic("bad conversion")
+	// }
+	return color.RGBA{r, g, b, a}
 }
 
 func (self LinearizedRGBA) RGBAf64() RGBAf64 {

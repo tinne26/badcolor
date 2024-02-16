@@ -25,12 +25,7 @@ func OklabGradient(gradient []color.RGBA, fromColor, toColor color.Color) {
 	gradient[0] = from.RGBA8()
 	for i := 1; i < len(gradient) - 1; i++ {
 		t := float64(i)/float64(len(gradient) - 1)
-		gradient[i] = Oklab{
-			L: InterpLinear(from.L, to.L, t),
-			A: InterpLinear(from.A, to.A, t),
-			B: InterpLinear(from.B, to.B, t),
-			Alpha: interpAlphaLinear(from.Alpha, to.Alpha, t),
-		}.RGBA8()
+		gradient[i] = from.Interpolate(to, t).RGBA8()
 	}
 	gradient[len(gradient) - 1] = to.RGBA8()
 }
